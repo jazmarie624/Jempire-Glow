@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jasz Era · Glow Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+:root{
+  --blush:#FDF0F5;--blush2:#FAE4EE;--blush3:#F5D0E0;
+  --gold:#C9A84C;--gold-l:#E8C96A;--gold-pale:#FDF6E8;--gold-border:#E8D5A0;
+  --rose:#C4758A;--rose-l:#D4889A;--rose-d:#A05570;
+  --pearl:#FDFAF8;--pearl2:#F5F0EC;
+  --champagne:#F7EDD8;--champagne2:#EFE0C0;
+  --pink:#E8A0B8;--pink-l:#F0B8CC;--pink-pale:#FEF0F5;
+  --purple:#9B7EBD;--purple-pale:#F3EEFF;
+  --green:#5A8A6A;--green-bg:#EDF5F0;--green-border:#B8D4C0;
+  --red:#C05060;--red-bg:#FDEEF0;--red-border:#F0C0C8;
+  --brown:#3A2020;--brown-mid:#7A4848;--brown-soft:#B08888;
+  --white:#FFFCFA;--border:#EDD8E0;--shadow:rgba(180,100,120,0.1);
+}
+body{font-family:'Inter',sans-serif;background:var(--blush);color:var(--brown);min-height:100vh;padding-bottom:80px;}
+
+/* SPARKLE ANIMATION */
+@keyframes sparkle{0%,100%{opacity:0;transform:scale(0) rotate(0deg);}50%{opacity:1;transform:scale(1) rotate(180deg);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@keyframes shimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+@keyframes glow{0%,100%{box-shadow:0 0 8px rgba(201,168,76,0.3);}50%{box-shadow:0 0 20px rgba(201,168,76,0.6);}}
+
+/* HEADER */
+.hdr{background:linear-gradient(145deg,#3A2020,#5A3030,#3A2020);padding:40px 20px 28px;position:relative;overflow:hidden;text-align:center;}
+.hdr-sparkles{position:absolute;inset:0;pointer-events:none;}
+.sparkle{position:absolute;font-size:14px;animation:sparkle 3s ease-in-out infinite;}
+.s1{top:15%;left:8%;animation-delay:0s;}
+.s2{top:25%;right:10%;animation-delay:0.5s;}
+.s3{top:60%;left:15%;animation-delay:1s;}
+.s4{top:70%;right:20%;animation-delay:1.5s;}
+.s5{top:40%;left:5%;animation-delay:2s;}
+.s6{top:50%;right:5%;animation-delay:2.5s;}
+.s7{top:10%;left:40%;animation-delay:0.8s;}
+.s8{top:80%;left:50%;animation-delay:1.8s;}
+.hdr-crown{font-size:32px;display:block;margin-bottom:10px;animation:float 3s ease-in-out infinite;position:relative;z-index:1;}
+.hdr-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;line-height:1.1;position:relative;z-index:1;background:linear-gradient(135deg,var(--gold-l),#FFF5D0,var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:shimmer 3s linear infinite;}
+.hdr-sub{font-size:11px;color:rgba(253,240,245,0.7);margin-top:6px;font-style:italic;font-family:'Cormorant Garamond',serif;position:relative;z-index:1;}
+.hdr-name{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--pink-l);margin-top:8px;position:relative;z-index:1;}
+
+/* TABS */
+.tabs{display:flex;background:var(--white);border-bottom:2px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;padding:12px 14px;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--brown-soft);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all 0.2s;}
+.tab.active{color:var(--rose);border-bottom-color:var(--rose);}
+
+/* SECTION */
+.sec{padding:14px 14px 0;}
+.sec-title{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--brown-soft);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+
+/* DASHBOARD */
+.glow-score{margin:14px 14px 0;background:linear-gradient(135deg,#5A3030,#7A4040);border-radius:18px;padding:20px;text-align:center;position:relative;overflow:hidden;animation:glow 3s ease-in-out infinite;}
+.gs-sparkles{position:absolute;inset:0;pointer-events:none;}
+.gs-lbl{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,240,245,0.7);margin-bottom:8px;}
+.gs-score{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:700;background:linear-gradient(135deg,var(--gold-l),#FFF5D0,var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.gs-sub{font-size:12px;color:rgba(253,240,245,0.7);margin-top:6px;font-style:italic;font-family:'Cormorant Garamond',serif;}
+.gs-bar{height:8px;background:rgba(255,255,255,0.15);border-radius:8px;overflow:hidden;margin:12px 0 6px;}
+.gs-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--gold),var(--gold-l),#FFF5D0);transition:width 0.8s;}
+.gs-msg{font-size:11px;font-weight:600;color:var(--pink-l);}
+
+/* COUNTDOWN CARDS */
+.countdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 14px 0;}
+.cd-card{background:var(--white);border-radius:14px;border:1px solid var(--border);padding:14px;box-shadow:0 2px 8px var(--shadow);text-align:center;}
+.cd-emoji{font-size:28px;margin-bottom:6px;animation:float 3s ease-in-out infinite;}
+.cd-name{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-soft);margin-bottom:6px;}
+.cd-days{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--rose);line-height:1;}
+.cd-label{font-size:10px;font-weight:600;color:var(--brown-soft);margin-top:3px;}
+.cd-due{font-size:10px;font-weight:600;color:var(--gold);margin-top:4px;}
+.cd-urgent{background:var(--red-bg);border-color:var(--red-border);}
+.cd-urgent .cd-days{color:var(--red);}
+.cd-ok{background:var(--green-bg);border-color:var(--green-border);}
+.cd-ok .cd-days{color:var(--green);}
+
+/* QUOTE CARD */
+.quote-card{margin:10px 14px 0;background:linear-gradient(135deg,var(--gold-pale),var(--champagne));border:1.5px solid var(--gold-border);border-radius:14px;padding:16px 18px;position:relative;}
+.quote-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:60px;color:var(--gold);position:absolute;top:-8px;left:12px;line-height:1;opacity:0.4;}
+.qc-text{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--brown-mid);line-height:1.6;padding-left:8px;font-weight:600;}
+.qc-attr{font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-top:8px;padding-left:8px;}
+
+/* CYCLE STATUS */
+.cycle-status{margin:10px 14px 0;border-radius:14px;padding:14px 16px;}
+.cs-period{background:linear-gradient(135deg,#FFE0E8,#FFD0DC);border:1.5px solid var(--red-border);}
+.cs-fertile{background:linear-gradient(135deg,#E0F5E8,#D0EED8);border:1.5px solid var(--green-border);}
+.cs-pms{background:linear-gradient(135deg,#F0E8FF,#E8D8FF);border:1.5px solid #D8C8EE;}
+.cs-normal{background:var(--white);border:1px solid var(--border);}
+.cs-icon{font-size:28px;margin-bottom:6px;}
+.cs-title{font-size:13px;font-weight:800;color:var(--brown);margin-bottom:3px;}
+.cs-msg{font-size:12px;font-weight:600;color:var(--brown-mid);line-height:1.5;}
+
+/* BEAUTY LOG CARDS */
+.appt-card{background:var(--white);border-radius:14px;border:1px solid var(--border);padding:14px 16px;margin-bottom:8px;box-shadow:0 2px 6px var(--shadow);}
+.ac-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.ac-left{display:flex;align-items:center;gap:10px;}
+.ac-emoji{font-size:26px;}
+.ac-name{font-size:14px;font-weight:700;color:var(--brown);}
+.ac-sub{font-size:10px;font-weight:600;color:var(--brown-soft);margin-top:2px;}
+.ac-countdown{text-align:right;}
+.ac-days{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--rose);}
+.ac-days-lbl{font-size:9px;font-weight:600;color:var(--brown-soft);}
+.ac-details{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
+.ac-detail{background:var(--blush);border-radius:8px;padding:8px 10px;}
+.acd-lbl{font-size:8px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown-soft);margin-bottom:2px;}
+.acd-val{font-size:12px;font-weight:700;color:var(--brown);}
+.ac-next{background:var(--gold-pale);border:1px solid var(--gold-border);border-radius:8px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;}
+.an-lbl{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
+.an-val{font-size:12px;font-weight:700;color:var(--brown-mid);}
+.ac-cost{background:var(--green-bg);border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;color:var(--green);margin-top:6px;display:inline-block;}
+.ac-btn{background:linear-gradient(135deg,var(--rose-d),var(--rose));color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;margin-top:8px;}
+.ac-edit{background:var(--blush2);border:1px solid var(--border);border-radius:9px;padding:7px 14px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;color:var(--brown-mid);margin-top:8px;margin-left:6px;}
+
+/* CYCLE CALENDAR */
+.cycle-cal{padding:0 14px;}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0 10px;}
+.cal-nav-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:var(--white);color:var(--rose);font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:700;}
+.cal-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--brown);}
+.cal-grid-hdr{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:4px;}
+.cal-day-lbl{text-align:center;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--brown-soft);padding:3px 0;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.cal-day{text-align:center;padding:6px 2px;border-radius:8px;font-size:12px;font-weight:600;color:var(--brown);cursor:pointer;min-height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;transition:all 0.15s;}
+.cal-day:hover{background:var(--blush2);}
+.cal-day.today{font-weight:800;color:var(--rose);background:var(--blush2);}
+.cal-day.period{background:linear-gradient(135deg,#FFD0DC,#FFB8CC);color:var(--red);}
+.cal-day.fertile{background:linear-gradient(135deg,#D0EED8,#B8E0C8);color:var(--green);}
+.cal-day.ovulation{background:linear-gradient(135deg,#E8D8FF,#D8C8EE);color:var(--purple);}
+.cal-day.intimate{background:linear-gradient(135deg,#FFF0D8,#FFE4B8);}
+.cal-day.pms{background:linear-gradient(135deg,#F0E8FF,#E0D0F8);color:var(--purple);}
+.cal-day.empty{cursor:default;}
+.cal-dot{width:5px;height:5px;border-radius:50%;}
+.cal-day-num{font-size:11px;line-height:1;}
+.cal-legend{display:flex;flex-wrap:wrap;gap:8px;padding:10px 14px;background:var(--white);border-radius:12px;margin-top:8px;border:1px solid var(--border);}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:var(--brown-mid);}
+.legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+.ld-period{background:#FFB8CC;}
+.ld-fertile{background:#B8E0C8;}
+.ld-ovulation{background:#D8C8EE;}
+.ld-intimate{background:#FFE4B8;}
+.ld-pms{background:#E0D0F8;}
+
+/* CYCLE LOG */
+.cycle-log-section{padding:12px 14px 0;}
+.log-period-btn{width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--rose-d),var(--rose));color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.log-btn-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.log-btn{padding:12px;border-radius:12px;border:none;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;}
+.lb-intimate{background:linear-gradient(135deg,#FFF0D8,#FFE0B8);color:#8B5E20;border:1px solid #E8C880;}
+.lb-symptom{background:linear-gradient(135deg,var(--purple-pale),#E8D8FF);color:var(--purple);border:1px solid #D0B8EE;}
+
+/* CYCLE STATS */
+.cycle-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px 14px 0;}
+.cs-stat{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;}
+.css-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--rose);}
+.css-lbl{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-soft);margin-top:3px;}
+
+/* WELLNESS */
+.wellness-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 14px 0;}
+.wellness-card{background:var(--white);border-radius:14px;border:1px solid var(--border);padding:14px;box-shadow:0 1px 4px var(--shadow);}
+.wc-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.wc-emoji{font-size:22px;}
+.wc-name{font-size:12px;font-weight:700;color:var(--brown);}
+.wc-val{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--rose);margin-bottom:4px;}
+.wc-sub{font-size:10px;font-weight:600;color:var(--brown-soft);}
+.wc-bar{height:6px;background:var(--blush2);border-radius:6px;overflow:hidden;margin:8px 0 4px;}
+.wc-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--rose-d),var(--pink));}
+.wc-btn{width:100%;padding:8px;border-radius:8px;border:none;background:var(--blush2);color:var(--rose);font-family:'Inter',sans-serif;font-size:10px;font-weight:700;cursor:pointer;margin-top:6px;}
+
+/* SUPPLEMENT TRACKER */
+.supp-list{padding:0 14px;display:flex;flex-direction:column;gap:6px;}
+.supp-item{background:var(--white);border-radius:10px;border:1px solid var(--border);padding:11px 13px;display:flex;align-items:center;gap:10px;}
+.supp-check{width:24px;height:24px;border-radius:6px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:13px;transition:all 0.15s;}
+.supp-check.on{background:linear-gradient(135deg,var(--rose-d),var(--rose));border-color:var(--rose);color:#fff;}
+.supp-name{font-size:13px;font-weight:600;color:var(--brown);flex:1;}
+.supp-time{font-size:10px;font-weight:600;color:var(--brown-soft);}
+
+/* BEAUTY BUDGET */
+.budget-total{margin:10px 14px 0;background:linear-gradient(135deg,var(--gold-pale),var(--champagne));border:1.5px solid var(--gold-border);border-radius:14px;padding:16px;}
+.bt-lbl{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.bt-amt{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:700;color:var(--brown-mid);}
+.bt-sub{font-size:11px;font-weight:600;color:var(--brown-soft);margin-top:3px;}
+.budget-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 14px 0;}
+.bb-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:12px;}
+.bbi-emoji{font-size:20px;margin-bottom:4px;}
+.bbi-name{font-size:10px;font-weight:700;color:var(--brown-soft);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;}
+.bbi-amt{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--rose);}
+
+/* SELFIE NOTES */
+.selfie-list{padding:0 14px;display:flex;flex-direction:column;gap:8px;}
+.selfie-card{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:13px 14px;}
+.sf-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.sf-date{font-size:11px;font-weight:700;color:var(--rose);}
+.sf-type{font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--blush2);color:var(--rose);}
+.sf-notes{font-size:12px;font-weight:500;color:var(--brown-mid);line-height:1.5;}
+.sf-feeling{font-size:13px;margin-top:4px;}
+
+/* OVERLAYS / SHEETS */
+.overlay{position:fixed;inset:0;background:rgba(58,32,32,0.55);z-index:100;display:none;align-items:flex-end;}
+.overlay.open{display:flex;}
+.sheet{background:var(--white);border-radius:22px 22px 0 0;padding:20px 18px 44px;width:100%;border-top:2px solid var(--border);max-height:88vh;overflow-y:auto;}
+.sheet-handle{width:34px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px;}
+.sheet-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--brown);margin-bottom:14px;}
+.form-lbl{font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--brown-soft);margin-bottom:4px;}
+.form-input{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:10px;background:var(--blush);color:var(--brown);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;outline:none;margin-bottom:10px;}
+.form-input:focus{border-color:var(--rose);}
+.form-input::placeholder{color:var(--brown-soft);}
+.form-select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:10px;background:var(--blush);color:var(--brown);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;outline:none;margin-bottom:10px;-webkit-appearance:none;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.btn-primary{width:100%;padding:13px;border-radius:11px;border:none;background:linear-gradient(135deg,var(--rose-d),var(--rose));color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px;}
+.btn-secondary{width:100%;padding:11px;border-radius:11px;border:none;background:var(--blush2);color:var(--brown-soft);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;margin-top:6px;}
+.symptom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px;}
+.sym-btn{padding:9px 6px;border-radius:10px;border:1.5px solid var(--border);background:var(--blush);color:var(--brown-mid);font-family:'Inter',sans-serif;font-size:11px;font-weight:600;cursor:pointer;text-align:center;transition:all 0.15s;}
+.sym-btn.sel{background:var(--blush3);border-color:var(--rose);color:var(--rose);}
+
+/* TOAST */
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:linear-gradient(135deg,var(--rose-d),var(--rose));color:#fff;padding:9px 20px;border-radius:20px;font-size:11px;font-weight:700;opacity:0;transition:all 0.3s;pointer-events:none;z-index:999;white-space:nowrap;box-shadow:0 4px 16px rgba(196,117,138,0.4);}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* NAV */
+.nav{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#3A2020,#5A3030);border-top:2px solid rgba(201,168,76,0.3);padding:9px 20px 16px;display:flex;justify-content:space-around;z-index:50;}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(253,240,245,0.4);}
+.nav-item.active{color:var(--gold-l);}
+.nav-icon{font-size:18px;}
+
+.add-fab{position:fixed;bottom:78px;right:16px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--rose-d),var(--rose));border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(196,117,138,0.5);z-index:200;display:flex;align-items:center;justify-content:center;animation:pulse 2s ease-in-out infinite;}
+
+.empty{text-align:center;padding:30px 20px;}
+.empty-icon{font-size:40px;margin-bottom:10px;}
+.empty-text{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--brown-soft);}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-sparkles">
+    <span class="sparkle s1">✨</span><span class="sparkle s2">💛</span>
+    <span class="sparkle s3">⭐</span><span class="sparkle s4">✨</span>
+    <span class="sparkle s5">💫</span><span class="sparkle s6">⭐</span>
+    <span class="sparkle s7">✨</span><span class="sparkle s8">💛</span>
+  </div>
+  <span class="hdr-crown">👑</span>
+  <div class="hdr-title">Jasz Era Glow Up ✨</div>
+  <div class="hdr-sub">"She who takes care of herself takes care of everything." 💛</div>
+  <div class="hdr-name">💁‍♀️ #rubiaxolinda · Blonde Era · Hot Mama Energy</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('dash',this)">✨ Dashboard</div>
+  <div class="tab" onclick="switchTab('beauty',this)">💅 Beauty</div>
+  <div class="tab" onclick="switchTab('cycle',this)">🌙 Cycle</div>
+  <div class="tab" onclick="switchTab('wellness',this)">💊 Wellness</div>
+  <div class="tab" onclick="switchTab('budget',this)">💰 Budget</div>
+</div>
+
+<!-- ══ DASHBOARD ══ -->
+<div id="tab-dash">
+  <div class="glow-score" id="glowScoreCard">
+    <div class="gs-sparkles">
+      <span class="sparkle s1" style="font-size:12px;">✨</span>
+      <span class="sparkle s4" style="font-size:10px;">💛</span>
+      <span class="sparkle s6" style="font-size:11px;">⭐</span>
+    </div>
+    <div class="gs-lbl">✨ Your Glow Up Score</div>
+    <div class="gs-score" id="glowScore">--</div>
+    <div class="gs-bar"><div class="gs-fill" id="glowFill" style="width:0%"></div></div>
+    <div class="gs-msg" id="glowMsg">Loading your glow...</div>
+  </div>
+
+  <div id="cycleStatusCard"></div>
+  <div id="quoteCardDiv"></div>
+
+  <div class="sec" style="margin-top:10px;"><div class="sec-title">💅 Appointment Countdowns</div></div>
+  <div class="countdown-grid" id="countdownGrid"></div>
+
+  <div class="sec" style="margin-top:14px;margin-bottom:16px;"><div class="sec-title">💛 Today's Affirmation</div>
+    <div style="background:var(--white);border-radius:12px;border:1px solid var(--border);padding:14px 16px;">
+      <div id="affirmation" style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--brown-mid);line-height:1.6;font-weight:600;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BEAUTY ══ -->
+<div id="tab-beauty" style="display:none;">
+  <div class="sec" style="margin-top:4px;">
+    <div class="sec-title">💛 Hair · Blonde Era</div>
+    <div id="hairCard"></div>
+  </div>
+  <div class="sec">
+    <div class="sec-title">💅 Nails · French Tip Queen</div>
+    <div id="nailCard"></div>
+  </div>
+  <div class="sec">
+    <div class="sec-title">👁️ Lashes</div>
+    <div id="lashCard"></div>
+  </div>
+  <div class="sec" style="margin-bottom:16px;">
+    <div class="sec-title">📸 Selfie Notes · Beauty Log</div>
+    <div class="selfie-list" id="selfieList"></div>
+    <button onclick="openSheet('selfieSheet')" style="width:100%;padding:11px;border-radius:10px;border:1.5px dashed var(--border);background:transparent;color:var(--rose);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;cursor:pointer;margin-top:6px;">+ Add Selfie Note ✦</button>
+  </div>
+</div>
+
+<!-- ══ CYCLE ══ -->
+<div id="tab-cycle" style="display:none;">
+  <div class="cycle-log-section">
+    <button class="log-period-btn" onclick="openSheet('periodSheet')">🩸 Log Period / Update Cycle</button>
+    <div class="log-btn-row">
+      <button class="log-btn lb-intimate" onclick="logIntimate()">🌹 Log Intimacy</button>
+      <button class="log-btn lb-symptom" onclick="openSheet('symptomSheet')">💜 Log Symptoms</button>
+    </div>
+  </div>
+
+  <div class="cycle-stats" id="cycleStats"></div>
+
+  <div class="cycle-cal">
+    <div class="cal-nav">
+      <button class="cal-nav-btn" onclick="calPrev()">‹</button>
+      <div class="cal-title" id="calTitle"></div>
+      <button class="cal-nav-btn" onclick="calNext()">›</button>
+    </div>
+    <div class="cal-grid-hdr">
+      <div class="cal-day-lbl">Su</div><div class="cal-day-lbl">Mo</div><div class="cal-day-lbl">Tu</div>
+      <div class="cal-day-lbl">We</div><div class="cal-day-lbl">Th</div><div class="cal-day-lbl">Fr</div><div class="cal-day-lbl">Sa</div>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="cal-legend">
+      <div class="legend-item"><div class="legend-dot ld-period"></div>Period</div>
+      <div class="legend-item"><div class="legend-dot ld-fertile"></div>Fertile</div>
+      <div class="legend-item"><div class="legend-dot ld-ovulation"></div>Ovulation</div>
+      <div class="legend-item"><div class="legend-dot ld-intimate"></div>Intimacy</div>
+      <div class="legend-item"><div class="legend-dot ld-pms"></div>PMS</div>
+    </div>
+  </div>
+
+  <div id="nextPeriodCard" style="margin:10px 14px 16px;"></div>
+</div>
+
+<!-- ══ WELLNESS ══ -->
+<div id="tab-wellness" style="display:none;">
+  <div class="sec" style="margin-top:4px;"><div class="sec-title">💧 Today's Wellness</div></div>
+  <div class="wellness-grid" id="wellnessGrid"></div>
+
+  <div class="sec" style="margin-top:14px;"><div class="sec-title">💊 Daily Supplements</div></div>
+  <div class="supp-list" id="suppList"></div>
+
+  <div class="sec" style="margin-top:14px;margin-bottom:16px;"><div class="sec-title">🌿 Skin Log · Today</div>
+    <div id="skinLog" style="padding:0 14px;"></div>
+  </div>
+</div>
+
+<!-- ══ BUDGET ══ -->
+<div id="tab-budget" style="display:none;">
+  <div id="budgetTotal"></div>
+  <div class="sec" style="margin-top:4px;"><div class="sec-title">💰 Spending by Category</div></div>
+  <div class="budget-breakdown" id="budgetBreakdown"></div>
+  <div class="sec" style="margin-top:14px;margin-bottom:16px;"><div class="sec-title">📋 Recent Expenses</div>
+    <div id="expenseList" style="padding:0 14px;display:flex;flex-direction:column;gap:6px;"></div>
+    <div style="padding:0 14px;margin-top:8px;">
+      <button onclick="openSheet('expenseSheet')" style="width:100%;padding:11px;border-radius:10px;border:1.5px dashed var(--border);background:transparent;color:var(--rose);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;cursor:pointer;">+ Add Expense ✦</button>
+    </div>
+  </div>
+</div>
+
+<!-- SHEETS -->
+<!-- Hair Sheet -->
+<div class="overlay" id="hairSheet" onclick="closeSheet('hairSheet',event)">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">💛 Hair Appointment</div>
+    <div class="form-lbl">Last Appointment Date</div>
+    <input class="form-input" id="hairLastDate" type="date"/>
+    <div class="form-lbl">Stylist</div>
+    <input class="form-input" id="hairStylist" placeholder="e.g. Jessica at Salon Bliss"/>
+    <div class="form-lbl">Color / Formula</div>
+    <input class="form-input" id="hairColor" placeholder="e.g. Blonde highlights, 10N base"/>
+    <div class="form-lbl">Toner</div>
+    <input class="form-input" id="hairToner" placeholder="e.g. Wella T18 Lightest Ash Blonde"/>
+    <div class="form-row">
+      <div><div class="form-lbl">Volume Developer</div><input class="form-input" id="hairDev" placeholder="e.g. 20 vol"/></div>
+      <div><div class="form-lbl">Cost ($)</div><input class="form-input" id="hairCost" type="number" placeholder="0.00"/></div>
+    </div>
+    <div class="form-lbl">Next Appointment Date</div>
+    <input class="form-input" id="hairNextDate" type="date"/>
+    <div class="form-lbl">Notes</div>
+    <input class="form-input" id="hairNotes" placeholder="How did you feel? Any changes?"/>
+    <button class="btn-primary" onclick="saveHair()">Save ✦</button>
+    <button class="btn-secondary" onclick="closeSheet('hairSheet')">Cancel</button>
+  </div>
+</div>
+
+<!-- Nail Sheet -->
+<div class="overlay" id="nailSheet" onclick="closeSheet('nailSheet',event)">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">💅 Nail Appointment</div>
+    <div class="form-lbl">Last Appointment Date</div>
+    <input class="form-input" id="nailLastDate" type="date"/>
+    <div class="form-lbl">Salon / Nail Tech</div>
+    <input class="form-input" id="nailSalon" placeholder="e.g. Luxe Nails - Linda"/>
+    <div class="form-lbl">Style</div>
+    <input class="form-input" id="nailStyle" placeholder="e.g. French tip, white toes"/>
+    <div class="form-lbl">Shape</div>
+    <input class="form-input" id="nailShape" placeholder="e.g. Coffin, almond, square"/>
+    <div class="form-row">
+      <div><div class="form-lbl">Color</div><input class="form-input" id="nailColor" placeholder="e.g. OPI Bubble Bath"/></div>
+      <div><div class="form-lbl">Cost ($)</div><input class="form-input" id="nailCost" type="number" placeholder="0.00"/></div>
+    </div>
+    <div class="form-lbl">Next Appointment Date</div>
+    <input class="form-input" id="nailNextDate" type="date"/>
+    <button class="btn-primary" onclick="saveNail()">Save ✦</button>
+    <button class="btn-secondary" onclick="closeSheet('nailSheet')">Cancel</button>
+  </div>
+</div>
+
+<!-- Lash Sheet -->
+<div class="overlay" id="lashSheet" onclick="closeSheet('lashSheet',event)">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">👁️ Lash Appointment</div>
+    <div class="form-lbl">Last Appointment Date</div>
+    <input class="form-input" id="lashLastDate" type="date"/>
+    <div class="form-lbl">Lash Tech</div>
+    <input class="form-input" id="lashTech" placeholder="e.g. Brianna at Lash Lounge"/>
+    <div class="form-lbl">Style / Length</div>
+    <input class="form-input" id="lashStyle" placeholder="e.g. Wispy, 12mm, CC curl"/>
+    <div class="form-row">
+      <div><div class="form-lbl">Fill or Full Set?</div>
+        <select class="form-select" id="lashType">
+          <option>Fill</option><option>Full Set</option>
+        </select>
+      </div>
+      <div><div class="form-lbl">Cost ($)</div><input class="form-input" id="lashCost" type="number" placeholder="0.00"/></div>
+    </div>
+    <div class="form-lbl">Next Appointment Date</div>
+    <input class="form-input" id="lashNextDate" type="date"/>
+    <button class="btn-primary" onclick="saveLash()">Save ✦</button>
+    <button class="btn-secondary" onclick="closeSheet('lashSheet')">Cancel</button>
+  </div>
+</div>
+
+<!-- Period Sheet -->
+<div class="overlay" id="periodSheet" onclick="closeSheet('periodSheet',event)">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">🩸 Log Period</div>
+    <div class="form-lbl">Period Start Date</div>
+    <input class="form-input" id="periodStart" type="date"/>
+    <div class="form-lbl">Period End Date (if known)</div>
+    <input class="form-input" id="periodEnd" type="date"/>
+    <div class="form-lbl">Flow</div>
+    <select class="form-select" id="periodFlow">
+      <option>Light</option><option selected>Medium</option><option>Heavy</option><option>Very Heavy</option>
+    </select>
+    <div class="form-lbl">Cycle Length (days since last period)</div>
+    <input class="form-input" id="cycleLength" type="number" placeholder="e.g. 28"/>
+    <button class="btn-primary" onclick="savePeriod()">Save Period ✦</button>
+    <button class="btn-secondary" onclick="closeSheet('periodSheet')">Cancel</button>
+  </div>
+</div>
+
+<!-- Symptom Sheet -->
+<div class="overlay" id="symptomSheet" onclick="closeSheet('symptomSheet',event)">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">💜 Log Symptoms</div>
+    <div class="form-lbl" style="margin-bottom:8px;">How are you feeling today?</div>
+    <div class="symptom-grid" id="symptomGrid">
+      <button class="sym-btn" onclick="toggleSym(this)">😣 Cramps</button>
+      <button class="sym-btn" onclick="toggleSym(this)">🫠 Bloating</button>
+      <button class="sym-btn" onclick="toggleSym(this)">😪 Fatigue</button>
+      <button class="sym-btn" onclick="toggleSym(this)">🍫 Cravings</button>
+      <button class="sym-btn" onclick="toggleSym(this)">😤 Moody</button>
+      <button class="sym-btn" onclick="toggleSym(this)">🤕 Headache</button>
+      <button class="sym-btn" onclick="toggleSym(this)">😴 Tired</button>
+      <button class="sym-btn" onclick="toggleSym(this)">✨ Energetic</button>
+      <button class="sym-btn" onclick="toggleSym(this)">😊 Happy</button>
+    </div>
+    <div class="form-lbl">Notes</div>
+    <input class="form-input" id="symptomNotes" placeholder="Anything else?"/>
+    <button class="btn-primary" onclick="saveSymptoms()">Save ✦</button>
+    <button class="btn-secondary" onclick="closeSheet('symptomSheet')">Cancel</button>
+  </div>
+</div>
+
+<!-- Selfie Sheet -->
+<div class="overlay" id="selfieSheet" onclick="closeSheet('selfieSheet',event)">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">📸 Selfie Note</div>
+    <div class="form-lbl">Date</div>
+    <input class="form-input" id="selfieDate" type="date"/>
+    <div class="form-lbl">What did you have done?</div>
+    <input class="form-input" id="selfieType" placeholder="e.g. Hair, nails, lashes, makeup"/>
+    <div class="form-lbl">Notes / How did you feel?</div>
+    <input class="form-input" id="selfieNotes" placeholder="e.g. Obsessed with my blonde! Got so many compliments 💛"/>
+    <div class="form-lbl">Feeling</div>
+    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+      <button class="sym-btn" onclick="setSelfieFeeling('💛',this)">💛 Glowing</button>
+      <button class="sym-btn" onclick="setSelfieFeeling('🔥',this)">🔥 On Fire</button>
+      <button class="sym-btn" onclick="setSelfieFeeling('👑',this)">👑 Queen</button>
+      <button class="sym-btn" onclick="setSelfieFeeling('✨',this)">✨ Sparkling</button>
+    </div>
+    <button class="btn-primary" onclick="saveSelfie()">Save ✦</button>
+    <button class="btn-secondary" onclick="closeSheet('selfieSheet')">Cancel</button>
+  </div>
+</div>
+
+<!-- Expense Sheet -->
+<div class="overlay" id="expenseSheet" onclick="closeSheet('expenseSheet',event)">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">💰 Add Beauty Expense</div>
+    <div class="form-lbl">Category</div>
+    <select class="form-select" id="expCat">
+      <option>💛 Hair</option><option>💅 Nails</option><option>👁️ Lashes</option>
+      <option>🛍️ Products</option><option>💆 Spa / Self Care</option><option>💄 Makeup</option><option>👗 Clothing</option>
+    </select>
+    <div class="form-lbl">Amount ($)</div>
+    <input class="form-input" id="expAmt" type="number" placeholder="0.00"/>
+    <div class="form-lbl">Date</div>
+    <input class="form-input" id="expDate" type="date"/>
+    <div class="form-lbl">Notes</div>
+    <input class="form-input" id="expNotes" placeholder="e.g. Highlights at Salon Bliss"/>
+    <button class="btn-primary" onclick="saveExpense()">Save ✦</button>
+    <button class="btn-secondary" onclick="closeSheet('expenseSheet')">Cancel</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="nav">
+  <a class="nav-item" href="https://jazmarie624.github.io/Jempire-Console/index.html"><span class="nav-icon">🏠</span>Home</a>
+  <a class="nav-item active" href="#"><span class="nav-icon">✨</span>Glow Up</a>
+  <a class="nav-item" href="https://jazmarie624.github.io/Jempire-Console/self_care.html"><span class="nav-icon">🕊️</span>Self Care</a>
+</div>
+
+<script>
+function lg(k){try{return JSON.parse(localStorage.getItem(k)||'null');}catch{return null;}}
+function ls(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
+
+const MO=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const SH=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+const QUOTES=[
+  "She is clothed in strength and dignity, and she laughs without fear of the future.",
+  "You didn't come this far to only come this far. Keep glowing, Queen. 👑",
+  "Invest in your hair — it's the crown you never take off. 💛",
+  "A woman who takes care of herself takes care of everything.",
+  "Blonde is not just a hair color. It's a lifestyle. ✨",
+  "She remembered who she was and the game changed. 💅",
+  "You deserve to feel beautiful every single day.",
+  "Hot mama energy is not a phase. It's a whole ERA. 🔥",
+  "Take care of yourself first. Everything else follows. 💛",
+  "You are the main character. Act like it. 👑",
+  "Glow different. Glow YOUR way. ✨",
+  "She turned her can'ts into cans and her dreams into plans. 💛",
+  "Boss mother. Blonde hair. Unstoppable energy. 🌟",
+  "Self care is not selfish. It is survival. 💅",
+  "You are a limited edition. There is no one like you. ✨",
+];
+
+const AFFIRMATIONS=[
+  "I am radiant, powerful, and worthy of every good thing coming my way. 💛",
+  "I take care of myself because I am worth taking care of. ✨",
+  "My blonde hair is my crown and I wear it with pride. 👑",
+  "I am a hot mama in my full glow up era and nobody can stop me. 🔥",
+  "I invest in myself because I am my greatest asset. 💅",
+  "I show up for myself the way I show up for everyone else. 💛",
+  "Beautiful inside and out — that's me, that's Jazmin. ✨",
+  "I deserve beautiful nails, gorgeous hair, and lashes that slay. 👁️",
+  "Taking care of my body is an act of love, not luxury. 🌸",
+  "I am building an empire and I look amazing doing it. 👑",
+  "My glow is not for anyone else. It is for ME. ✨",
+  "I prioritize myself without guilt. I am enough. 💛",
+];
+
+let hair=lg('je_glow_hair')||null;
+let nails=lg('je_glow_nails')||null;
+let lashes=lg('je_glow_lashes')||null;
+let periods=lg('je_glow_periods')||[];
+let intimacyLog=lg('je_glow_intimate')||[];
+let symptoms=lg('je_glow_symptoms')||[];
+let selfieNotes=lg('je_glow_selfies')||[];
+let expenses=lg('je_glow_expenses')||[];
+let supplements=lg('je_glow_supps')||[
+  {id:'s1',name:'Prenatal Vitamin',time:'Morning',done:false},
+  {id:'s2',name:'Vitamin D3',time:'Morning',done:false},
+  {id:'s3',name:'Collagen Peptides',time:'Morning',done:false},
+  {id:'s4',name:'Magnesium',time:'Evening',done:false},
+  {id:'s5',name:'Biotin',time:'Morning',done:false},
+];
+let wellness=lg('je_glow_wellness')||{water:0,sleep:0,skinRating:0};
+let selFeeling='';
+let calYear=new Date().getFullYear(), calMonth=new Date().getMonth();
+
+// ── TABS ──
+function switchTab(t,el){
+  ['dash','beauty','cycle','wellness','budget'].forEach(x=>document.getElementById('tab-'+x).style.display='none');
+  document.getElementById('tab-'+t).style.display='block';
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  if(el) el.classList.add('active');
+  if(t==='dash') renderDash();
+  if(t==='beauty') renderBeauty();
+  if(t==='cycle'){renderCycleStats();renderCal();renderNextPeriod();}
+  if(t==='wellness') renderWellness();
+  if(t==='budget') renderBudget();
+}
+
+// ── SHEETS ──
+function openSheet(id){document.getElementById(id).classList.add('open');}
+function closeSheet(id,e){if(e&&e.target!==document.getElementById(id))return;document.getElementById(id).classList.remove('open');}
+
+// ── DATES ──
+function today(){return new Date().toISOString().split('T')[0];}
+function daysBetween(a,b){return Math.round((new Date(b)-new Date(a))/86400000);}
+function daysUntil(d){return Math.round((new Date(d)-new Date())/86400000);}
+function formatDate(d){if(!d)return '—';const dt=new Date(d);return SH[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();}
+
+// ── GLOW SCORE ──
+function calcGlowScore(){
+  let score=0, max=0;
+  const checks=[
+    [hair&&hair.nextDate&&daysUntil(hair.nextDate)>0, 25],
+    [nails&&nails.nextDate&&daysUntil(nails.nextDate)>0, 20],
+    [lashes&&lashes.nextDate&&daysUntil(lashes.nextDate)>0, 20],
+    [wellness.water>=6, 10],
+    [wellness.sleep>=7, 10],
+    [supplements.filter(s=>s.done).length>=3, 10],
+    [periods.length>0, 5],
+  ];
+  checks.forEach(([ok,pts])=>{max+=pts;if(ok)score+=pts;});
+  return max>0?Math.round((score/max)*100):0;
+}
+
+// ── CYCLE HELPERS ──
+function getLastPeriod(){return periods.length?periods[periods.length-1]:null;}
+function avgCycleLength(){
+  if(periods.length<2) return 28;
+  const lengths=[];
+  for(let i=1;i<periods.length;i++){
+    lengths.push(daysBetween(periods[i-1].start,periods[i].start));
+  }
+  return Math.round(lengths.reduce((a,b)=>a+b,0)/lengths.length);
+}
+function predictNextPeriod(){
+  const last=getLastPeriod();
+  if(!last) return null;
+  const avg=avgCycleLength();
+  const next=new Date(last.start);
+  next.setDate(next.getDate()+avg);
+  return next.toISOString().split('T')[0];
+}
+function getDayType(dateStr){
+  // Check period
+  for(const p of periods){
+    const start=new Date(p.start), end=new Date(p.end||p.start);
+    end.setDate(end.getDate()+(p.duration||5));
+    const d=new Date(dateStr);
+    if(d>=start&&d<=end) return 'period';
+  }
+  // Check intimate
+  if(intimacyLog.find(i=>i.date===dateStr)) return 'intimate';
+  // Check fertile/ovulation based on last period
+  const last=getLastPeriod();
+  if(last){
+    const avg=avgCycleLength();
+    const cycleDay=daysBetween(last.start,dateStr);
+    const ovDay=avg-14;
+    if(cycleDay===ovDay) return 'ovulation';
+    if(cycleDay>=ovDay-5&&cycleDay<=ovDay+1) return 'fertile';
+    if(cycleDay>=avg-7&&cycleDay<avg) return 'pms';
+  }
+  return '';
+}
+function getCycleStatus(){
+  const next=predictNextPeriod();
+  if(!next) return null;
+  const days=daysUntil(next);
+  const last=getLastPeriod();
+  if(!last) return null;
+  const avg=avgCycleLength();
+  const today2=today();
+  const dayType=getDayType(today2);
+  if(dayType==='period') return {type:'period',icon:'🩸',cls:'cs-period',title:'Your Period is Here 🩸',msg:'Rest, hydrate, and be gentle with yourself. You\'ve got this. 💛'};
+  if(dayType==='ovulation') return {type:'ovulation',icon:'🌟',cls:'cs-fertile',title:'Ovulation Day ✨',msg:'Peak fertility today! Your body is doing amazing things. 🌸'};
+  if(dayType==='fertile') return {type:'fertile',icon:'🌿',cls:'cs-fertile',title:'Fertile Window 🌿',msg:'You are in your fertile window right now. Stay aware, Queen. 💛'};
+  if(dayType==='pms') return {type:'pms',icon:'💜',cls:'cs-pms',title:'PMS May Be Coming 💜',msg:`Your period is expected in about ${days} days. Be extra gentle with yourself. Take it easy. 🌸`};
+  if(days<=2) return {type:'soon',icon:'🩸',cls:'cs-period',title:`Period Arriving Soon! 🩸`,msg:`Your period is expected ${days===0?'today':days===1?'tomorrow':days+' days'}. Stock up on your supplies. 💛`};
+  if(days<=7) return {type:'coming',icon:'🌙',cls:'cs-pms',title:`Period in ${days} Days 🌙`,msg:'You may start feeling some PMS symptoms soon. Self care mode: on. 💅'};
+  return {type:'normal',icon:'✨',cls:'cs-normal',title:`Next Period in ${days} Days ✨`,msg:'You are in a good phase right now. Enjoy your glow! 💛'};
+}
+
+// ── DASHBOARD ──
+function renderDash(){
+  // Glow score
+  const score=calcGlowScore();
+  document.getElementById('glowScore').textContent=score+'%';
+  document.getElementById('glowFill').style.width=score+'%';
+  const msgs=['Keep going, Queen! Every little step counts. 💛','Getting there! Your glow is building. ✨','Looking good! You\'re taking care of yourself. 💅','She\'s glowing! Keep it up, hot mama! 🔥','FULL GLOW UP MODE! You are THAT girl! 👑✨'];
+  document.getElementById('glowMsg').textContent=msgs[Math.floor(score/21)];
+
+  // Cycle status
+  const cs=getCycleStatus();
+  const csDiv=document.getElementById('cycleStatusCard');
+  if(cs){
+    csDiv.innerHTML=`<div class="cycle-status ${cs.cls}" style="margin:10px 14px 0;border-radius:14px;padding:14px 16px;"><div class="cs-icon">${cs.icon}</div><div class="cs-title">${cs.title}</div><div class="cs-msg">${cs.msg}</div></div>`;
+  } else {
+    csDiv.innerHTML=`<div style="margin:10px 14px 0;background:var(--white);border-radius:14px;padding:12px 14px;border:1px solid var(--border);text-align:center;font-size:12px;color:var(--brown-soft);font-style:italic;">Log your first period to track your cycle 🌙</div>`;
+  }
+
+  // Quote
+  const q=QUOTES[new Date().getDate()%QUOTES.length];
+  document.getElementById('quoteCardDiv').innerHTML=`<div class="quote-card" style="margin:10px 14px 0;"><div class="qc-text">${q}</div><div class="qc-attr">— Jasz Era Glow Up ✨</div></div>`;
+
+  // Affirmation
+  document.getElementById('affirmation').textContent=AFFIRMATIONS[new Date().getDate()%AFFIRMATIONS.length];
+
+  // Countdowns
+  const items=[
+    {name:'Hair',emoji:'💛',data:hair,freq:42},
+    {name:'Nails',emoji:'💅',data:nails,freq:21},
+    {name:'Lashes',emoji:'👁️',data:lashes,freq:21},
+  ];
+  const next=predictNextPeriod();
+  if(next) items.push({name:'Period',emoji:'🩸',nextDate:next,freq:avgCycleLength()});
+
+  document.getElementById('countdownGrid').innerHTML=items.map(item=>{
+    const nd=item.data?item.data.nextDate:item.nextDate;
+    if(!nd) return `<div class="cd-card" onclick="openSheet('${item.name.toLowerCase()}Sheet')"><div class="cd-emoji">${item.emoji}</div><div class="cd-name">${item.name}</div><div class="cd-days">—</div><div class="cd-label">Tap to add</div></div>`;
+    const d=daysUntil(nd);
+    const cls=d<=3?'cd-urgent':d<=7?'':'cd-ok';
+    const lbl=d<0?'Overdue!':d===0?'Today!':d===1?'Tomorrow':d+' days';
+    return `<div class="cd-card ${cls}" onclick="${item.name!=='Period'?`openSheet('${item.name.toLowerCase()}Sheet')`:''}"><div class="cd-emoji">${item.emoji}</div><div class="cd-name">${item.name}</div><div class="cd-days">${Math.abs(d)}</div><div class="cd-label">${lbl}</div><div class="cd-due">${formatDate(nd)}</div></div>`;
+  }).join('');
+}
+
+// ── BEAUTY ──
+function renderBeauty(){
+  renderApptCard('hairCard','💛 Hair · Blonde Era',hair,'hairSheet',['color','toner','dev','stylist','cost']);
+  renderApptCard('nailCard','💅 Nails · French Tip',nails,'nailSheet',['style','shape','color','salon','cost']);
+  renderApptCard('lashCard','👁️ Lashes',lashes,'lashSheet',['style','type','tech','cost']);
+  renderSelfies();
+}
+
+function renderApptCard(divId,title,data,sheetId,fields){
+  const el=document.getElementById(divId);
+  if(!data){
+    el.innerHTML=`<div class="appt-card"><div class="ac-top"><div class="ac-left"><div style="font-size:24px;">${title.split(' ')[0]}</div><div><div class="ac-name">No appointment logged yet</div><div class="ac-sub">Tap to add your first appointment</div></div></div></div><button class="ac-btn" onclick="openSheet('${sheetId}')">+ Add Appointment ✦</button></div>`;
+    return;
+  }
+  const daysLeft=data.nextDate?daysUntil(data.nextDate):null;
+  const urgent=daysLeft!==null&&daysLeft<=7;
+  el.innerHTML=`<div class="appt-card${urgent?' ':"'}">
+    <div class="ac-top">
+      <div class="ac-left"><div class="ac-emoji">${title.split(' ')[0]}</div><div><div class="ac-name">${title.split('·')[1]?.trim()||title}</div><div class="ac-sub">Last: ${formatDate(data.lastDate)}</div></div></div>
+      ${daysLeft!==null?`<div class="ac-countdown"><div class="ac-days" style="${daysLeft<=3?'color:var(--red)':''}">${Math.abs(daysLeft)}</div><div class="ac-days-lbl">${daysLeft<0?'days overdue':daysLeft===0?'today!':'days left'}</div></div>`:''}
+    </div>
+    <div class="ac-details">
+      ${data.color?`<div class="ac-detail"><div class="acd-lbl">Color</div><div class="acd-val">${data.color}</div></div>`:''}
+      ${data.toner?`<div class="ac-detail"><div class="acd-lbl">Toner</div><div class="acd-val">${data.toner}</div></div>`:''}
+      ${data.dev?`<div class="ac-detail"><div class="acd-lbl">Developer</div><div class="acd-val">${data.dev}</div></div>`:''}
+      ${data.stylist||data.salon||data.tech?`<div class="ac-detail"><div class="acd-lbl">By</div><div class="acd-val">${data.stylist||data.salon||data.tech}</div></div>`:''}
+      ${data.style?`<div class="ac-detail"><div class="acd-lbl">Style</div><div class="acd-val">${data.style}</div></div>`:''}
+      ${data.shape?`<div class="ac-detail"><div class="acd-lbl">Shape</div><div class="acd-val">${data.shape}</div></div>`:''}
+    </div>
+    ${data.nextDate?`<div class="ac-next"><div><div class="an-lbl">Next Appointment</div><div class="an-val">${formatDate(data.nextDate)}</div></div><div style="font-size:20px;">${urgent?'⚠️':'📅'}</div></div>`:''}
+    ${data.cost?`<span class="ac-cost">💰 $${data.cost}</span>`:''}
+    <button class="ac-btn" onclick="openSheet('${sheetId}')">✏️ Update</button>
+  </div>`;
+}
+
+function renderSelfies(){
+  const el=document.getElementById('selfieList');
+  if(!selfieNotes.length){el.innerHTML='<div class="empty"><div class="empty-icon">📸</div><div class="empty-text">No selfie notes yet — add your first glow moment! ✨</div></div>';return;}
+  el.innerHTML=[...selfieNotes].reverse().slice(0,10).map(s=>`
+    <div class="selfie-card">
+      <div class="sf-top"><div class="sf-date">${formatDate(s.date)}</div><div class="sf-type">${s.type}</div></div>
+      <div class="sf-notes">${s.notes}</div>
+      <div class="sf-feeling">${s.feeling||'✨'}</div>
+    </div>`).join('');
+}
+
+// ── CYCLE ──
+function renderCycleStats(){
+  const avg=avgCycleLength();
+  const last=getLastPeriod();
+  const next=predictNextPeriod();
+  const daysLeft=next?daysUntil(next):null;
+  document.getElementById('cycleStats').innerHTML=`
+    <div class="cs-stat"><div class="css-val">${periods.length}</div><div class="css-lbl">Periods Logged</div></div>
+    <div class="cs-stat"><div class="css-val">${avg}</div><div class="css-lbl">Avg Cycle</div></div>
+    <div class="cs-stat"><div class="css-val">${daysLeft!==null?Math.abs(daysLeft)+'d':'—'}</div><div class="css-lbl">${daysLeft!==null&&daysLeft<0?'Overdue':'Until Next'}</div></div>`;
+}
+
+function calPrev(){calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCal();}
+function calNext(){calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCal();}
+
+function renderCal(){
+  document.getElementById('calTitle').textContent=MO[calMonth]+' '+calYear;
+  const firstDay=new Date(calYear,calMonth,1).getDay();
+  const dim=new Date(calYear,calMonth+1,0).getDate();
+  const todayStr=today();
+  let html='';
+  for(let i=0;i<firstDay;i++) html+='<div class="cal-day empty"></div>';
+  for(let d=1;d<=dim;d++){
+    const ds=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    const type=getDayType(ds);
+    const isToday=ds===todayStr;
+    const icons={'period':'🩸','fertile':'🌿','ovulation':'🌟','intimate':'🌹','pms':'💜','':''}; 
+    html+=`<div class="cal-day${type?' '+type:''}${isToday?' today':''}" onclick="calDayTap('${ds}')">
+      <div class="cal-day-num">${d}</div>
+      ${icons[type]?`<div style="font-size:9px;">${icons[type]}</div>`:''}
+    </div>`;
+  }
+  document.getElementById('calGrid').innerHTML=html;
+}
+
+function calDayTap(ds){
+  const type=getDayType(ds);
+  if(type==='intimate'){showToast('🌹 Intimacy logged on '+formatDate(ds));return;}
+  // Could open a day detail sheet
+}
+
+function renderNextPeriod(){
+  const next=predictNextPeriod();
+  const el=document.getElementById('nextPeriodCard');
+  if(!next){el.innerHTML='';return;}
+  const d=daysUntil(next);
+  const msg=d<=0?'Your period may be here! 🩸':d<=2?`Your period is arriving very soon — in ${d} day${d===1?'':'s'}! Stock up on supplies. 🩸`:d<=7?`Your period is coming in ${d} days. PMS may start soon. Be gentle with yourself. 💜`:`Your next period is in ${d} days. Enjoy this phase! ✨`;
+  el.innerHTML=`<div style="background:${d<=3?'var(--red-bg)':'var(--gold-pale)'};border:1.5px solid ${d<=3?'var(--red-border)':'var(--gold-border)'};border-radius:14px;padding:14px 16px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:${d<=3?'var(--red)':'var(--gold)'};margin-bottom:6px;">🌙 Cycle Prediction</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--brown-mid);line-height:1.5;">${msg}</div>
+    <div style="font-size:11px;font-weight:700;color:var(--brown-soft);margin-top:6px;">Expected: ${formatDate(next)} · Avg cycle: ${avgCycleLength()} days</div>
+  </div>`;
+}
+
+// ── WELLNESS ──
+function renderWellness(){
+  const w=wellness;
+  document.getElementById('wellnessGrid').innerHTML=`
+    <div class="wellness-card">
+      <div class="wc-hdr"><div class="wc-emoji">💧</div><div class="wc-name">Water</div></div>
+      <div class="wc-val">${w.water}<span style="font-size:16px;color:var(--brown-soft);"> / 8</span></div>
+      <div class="wc-sub">glasses today</div>
+      <div class="wc-bar"><div class="wc-fill" style="width:${Math.min(100,(w.water/8)*100)}%"></div></div>
+      <button class="wc-btn" onclick="addWater()">+ Add Glass 💧</button>
+    </div>
+    <div class="wellness-card">
+      <div class="wc-hdr"><div class="wc-emoji">😴</div><div class="wc-name">Sleep</div></div>
+      <div class="wc-val">${w.sleep||'—'}<span style="font-size:16px;color:var(--brown-soft);"> hrs</span></div>
+      <div class="wc-sub">last night</div>
+      <div class="wc-bar"><div class="wc-fill" style="width:${Math.min(100,((w.sleep||0)/9)*100)}%;background:linear-gradient(90deg,#9B7EBD,#C4A8E0);"></div></div>
+      <button class="wc-btn" onclick="logSleep()" style="color:var(--purple);">Log Sleep 😴</button>
+    </div>
+    <div class="wellness-card">
+      <div class="wc-hdr"><div class="wc-emoji">🌿</div><div class="wc-name">Skin Today</div></div>
+      <div class="wc-val" style="font-size:32px;">${['😐','😕','😊','✨','🌟'][w.skinRating]||'😐'}</div>
+      <div class="wc-sub">${['Not sure','Rough day','Pretty good','Glowing!','Perfect skin!'][w.skinRating]||'Rate your skin'}</div>
+      <div style="display:flex;gap:4px;margin-top:8px;justify-content:center;">
+        ${[0,1,2,3,4].map(i=>`<button onclick="setSkin(${i})" style="font-size:16px;background:none;border:none;cursor:pointer;opacity:${w.skinRating===i?1:0.4};">${['😐','😕','😊','✨','🌟'][i]}</button>`).join('')}
+      </div>
+    </div>
+    <div class="wellness-card">
+      <div class="wc-hdr"><div class="wc-emoji">💊</div><div class="wc-name">Supplements</div></div>
+      <div class="wc-val">${supplements.filter(s=>s.done).length}<span style="font-size:16px;color:var(--brown-soft);"> / ${supplements.length}</span></div>
+      <div class="wc-sub">taken today</div>
+      <div class="wc-bar"><div class="wc-fill" style="background:linear-gradient(90deg,var(--green),#8ACA9A);width:${(supplements.filter(s=>s.done).length/supplements.length)*100}%"></div></div>
+    </div>`;
+
+  // Supplements
+  document.getElementById('suppList').innerHTML=supplements.map(s=>`
+    <div class="supp-item">
+      <div class="supp-check${s.done?' on':''}" onclick="toggleSupp('${s.id}')">${s.done?'✓':''}</div>
+      <div class="supp-name">${s.name}</div>
+      <div class="supp-time">${s.time}</div>
+    </div>`).join('');
+
+  // Skin log
+  document.getElementById('skinLog').innerHTML=`<div style="background:var(--white);border-radius:12px;border:1px solid var(--border);padding:12px 14px;">
+    <div style="font-size:12px;font-weight:600;color:var(--brown-mid);">Products used today:</div>
+    <input style="width:100%;padding:9px 11px;border:1.5px solid var(--border);border-radius:9px;background:var(--blush);color:var(--brown);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;outline:none;margin-top:8px;" placeholder="e.g. CeraVe cleanser, The Ordinary Niacinamide..." id="skinProducts"/>
+    <button onclick="saveSkinProducts()" style="width:100%;padding:9px;border-radius:9px;border:none;background:var(--blush2);color:var(--rose);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;cursor:pointer;margin-top:6px;">Save Products ✦</button>
+  </div>`;
+}
+
+function addWater(){wellness.water=Math.min(8,(wellness.water||0)+1);ls('je_glow_wellness',wellness);renderWellness();showToast('💧 Water logged!');}
+function logSleep(){const hrs=prompt('How many hours did you sleep?');if(hrs){wellness.sleep=parseFloat(hrs);ls('je_glow_wellness',wellness);renderWellness();showToast('😴 Sleep logged!');}}
+function setSkin(r){wellness.skinRating=r;ls('je_glow_wellness',wellness);renderWellness();}
+function saveSkinProducts(){const p=document.getElementById('skinProducts').value;if(p){showToast('🌿 Skin products saved ✦');}}
+function toggleSupp(id){const s=supplements.find(x=>x.id===id);if(s){s.done=!s.done;ls('je_glow_supps',supplements);renderWellness();}}
+
+// ── BUDGET ──
+function renderBudget(){
+  const total=expenses.reduce((s,e)=>s+Number(e.amount||0),0);
+  const month=new Date().getMonth();
+  const monthExp=expenses.filter(e=>new Date(e.date).getMonth()===month);
+  const monthTotal=monthExp.reduce((s,e)=>s+Number(e.amount||0),0);
+  document.getElementById('budgetTotal').innerHTML=`<div class="budget-total"><div class="bt-lbl">💰 Beauty Spending This Month</div><div class="bt-amt">$${monthTotal.toFixed(2)}</div><div class="bt-sub">$${total.toFixed(2)} total all time</div></div>`;
+  
+  const cats={'💛 Hair':0,'💅 Nails':0,'👁️ Lashes':0,'🛍️ Products':0,'💆 Spa / Self Care':0,'💄 Makeup':0,'👗 Clothing':0};
+  monthExp.forEach(e=>{if(cats[e.category]!==undefined)cats[e.category]+=Number(e.amount||0);});
+  document.getElementById('budgetBreakdown').innerHTML=Object.entries(cats).filter(([k,v])=>v>0).map(([k,v])=>`<div class="bb-item"><div class="bbi-emoji">${k.split(' ')[0]}</div><div class="bbi-name">${k.split(' ').slice(1).join(' ')}</div><div class="bbi-amt">$${v.toFixed(2)}</div></div>`).join('');
+
+  const el=document.getElementById('expenseList');
+  if(!expenses.length){el.innerHTML='<div class="empty"><div class="empty-icon">💰</div><div class="empty-text">No expenses logged yet ✦</div></div>';return;}
+  el.innerHTML=[...expenses].reverse().slice(0,15).map(e=>`
+    <div style="background:var(--white);border-radius:10px;border:1px solid var(--border);padding:11px 13px;display:flex;align-items:center;justify-content:space-between;">
+      <div><div style="font-size:13px;font-weight:700;color:var(--brown);">${e.category} ${e.notes?'· '+e.notes:''}</div><div style="font-size:10px;font-weight:600;color:var(--brown-soft);margin-top:2px;">${formatDate(e.date)}</div></div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--rose);">$${Number(e.amount).toFixed(2)}</div>
+    </div>`).join('');
+}
+
+// ── SAVE FUNCTIONS ──
+function saveHair(){
+  hair={lastDate:document.getElementById('hairLastDate').value,stylist:document.getElementById('hairStylist').value,color:document.getElementById('hairColor').value,toner:document.getElementById('hairToner').value,dev:document.getElementById('hairDev').value,cost:document.getElementById('hairCost').value,nextDate:document.getElementById('hairNextDate').value,notes:document.getElementById('hairNotes').value};
+  ls('je_glow_hair',hair);closeSheet('hairSheet');renderBeauty();renderDash();showToast('💛 Hair appointment saved ✦');
+}
+function saveNail(){
+  nails={lastDate:document.getElementById('nailLastDate').value,salon:document.getElementById('nailSalon').value,style:document.getElementById('nailStyle').value,shape:document.getElementById('nailShape').value,color:document.getElementById('nailColor').value,cost:document.getElementById('nailCost').value,nextDate:document.getElementById('nailNextDate').value};
+  ls('je_glow_nails',nails);closeSheet('nailSheet');renderBeauty();renderDash();showToast('💅 Nail appointment saved ✦');
+}
+function saveLash(){
+  lashes={lastDate:document.getElementById('lashLastDate').value,tech:document.getElementById('lashTech').value,style:document.getElementById('lashStyle').value,type:document.getElementById('lashType').value,cost:document.getElementById('lashCost').value,nextDate:document.getElementById('lashNextDate').value};
+  ls('je_glow_lashes',lashes);closeSheet('lashSheet');renderBeauty();renderDash();showToast('👁️ Lash appointment saved ✦');
+}
+function savePeriod(){
+  const start=document.getElementById('periodStart').value;
+  const end=document.getElementById('periodEnd').value;
+  const flow=document.getElementById('periodFlow').value;
+  const cl=parseInt(document.getElementById('cycleLength').value)||28;
+  if(!start){showToast('Please enter a start date');return;}
+  periods.push({id:'p_'+Date.now(),start,end,flow,cycleLength:cl});
+  ls('je_glow_periods',periods);
+  closeSheet('periodSheet');renderCycleStats();renderCal();renderNextPeriod();renderDash();
+  showToast('🩸 Period logged ✦');
+}
+function logIntimate(){
+  const d=today();
+  if(intimacyLog.find(i=>i.date===d)){showToast('🌹 Already logged today');return;}
+  intimacyLog.push({id:'i_'+Date.now(),date:d});
+  ls('je_glow_intimate',intimacyLog);
+  renderCal();showToast('🌹 Intimacy logged ✦');
+}
+function toggleSym(btn){btn.classList.toggle('sel');}
+function saveSymptoms(){
+  const sel=[...document.querySelectorAll('#symptomGrid .sym-btn.sel')].map(b=>b.textContent.trim());
+  const notes=document.getElementById('symptomNotes').value;
+  symptoms.push({id:'sy_'+Date.now(),date:today(),symptoms:sel,notes});
+  ls('je_glow_symptoms',symptoms);
+  closeSheet('symptomSheet');showToast('💜 Symptoms logged ✦');
+}
+function setSelfieFeeling(f,btn){selFeeling=f;document.querySelectorAll('#selfieSheet .sym-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');}
+function saveSelfie(){
+  const date=document.getElementById('selfieDate').value||today();
+  const type=document.getElementById('selfieType').value;
+  const notes=document.getElementById('selfieNotes').value;
+  if(!notes){showToast('Add some notes!');return;}
+  selfieNotes.push({id:'sf_'+Date.now(),date,type,notes,feeling:selFeeling||'✨'});
+  ls('je_glow_selfies',selfieNotes);
+  closeSheet('selfieSheet');renderSelfies();showToast('📸 Selfie note saved ✦');
+}
+function saveExpense(){
+  const cat=document.getElementById('expCat').value;
+  const amt=document.getElementById('expAmt').value;
+  const date=document.getElementById('expDate').value||today();
+  const notes=document.getElementById('expNotes').value;
+  if(!amt){showToast('Enter an amount');return;}
+  expenses.push({id:'ex_'+Date.now(),category:cat,amount:amt,date,notes});
+  ls('je_glow_expenses',expenses);
+  closeSheet('expenseSheet');renderBudget();showToast('💰 Expense saved ✦');
+}
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+
+// INIT
+renderDash();
+</script>
+</body>
+</html>
